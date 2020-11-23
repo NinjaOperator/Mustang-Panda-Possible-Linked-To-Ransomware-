@@ -1,0 +1,32 @@
+Mustang Panda Possible Linked To Ransomware 
+Part one 
+
+On 11/23/20 ProofPoint  reported Mustang Panda is deploying PlugX payload written in Go. Reviewing the indicators I decided to focus on SHA256 930b7a798e3279b7460e30ce2f3a2deccbc252f3ca213cb022f5b7e6a25a0867 
+ File Name: AdobelmdyU.exe 
+Pivoted into Intezer to get a better undestanding of genetic makeup 930b7a798e3279b7460e30ce2f3a2deccbc252f3ca213cb022f5b7e6a25a0867. I noticed that this file shares 1,503 genes (97.85%) with  SHA256 a33856c79b6e10ce864cfece166b57c8c3f0e3f502a8d5c7b98084e25162871f
+ File Name: activador office.exe. Intezer has categorized this file as Encrp Ransomware.
+ 
+ Then Pivoting into VT and focusing on the Imphash and Rich PE header hash we can see that they share infrastructure.
+ Imphash
+fcf1390e9ce472c7270447fc5c61a0c1
+Rich PE header hash
+f933ea1f0c4bf584663810a9d16ff4f7
+
+According to VT activador office.exe was created on 12/05/19 and AdobelmdyU.exe was created 3/26/2020.
+Since the creation times for both files are current they are no indications that the developers utlized a technique called Timestomp (MITRE ID T1070).
+So it's since the file have identical Imphash/Rich PE header hash it's likely that this threat activity is related and that the ransomware binary was created first.
+However it's important to mention that there are no indications via OSINT (at this time) that Mustang Panda is deploying ransomware.
+
+Due to the limited visibilty that I have using Freemium VT, Intezer and RiskIQ.  
+I'll dive deeper in Part II by using other publicly available tools and OSINT and see if I can find additonal data that links Mustang Panda with Encrp Ransomware.
+
+References:
+https://www.proofpoint.com/us/blog/threat-insight/ta416-goes-ground-and-returns-golang-plugx-malware-loader?utm_source=social_organic&utm_social_network=twitter&utm_campaign=2020_November_Threat_Blog&utm_post_id=f5731f49-7eb9-4a15-8c38-821d1a22112b
+
+https://analyze.intezer.com/analyses/1558c640-bdb2-4f09-9d1f-be25dfc1d57e/sub/4100b13d-2e5a-462a-919e-8f393bbcdbfc
+
+https://analyze.intezer.com/analyses/1558c640-bdb2-4f09-9d1f-be25dfc1d57e
+
+https://www.virustotal.com/gui/file/a33856c79b6e10ce864cfece166b57c8c3f0e3f502a8d5c7b98084e25162871f/details
+
+https://www.virustotal.com/gui/file/930b7a798e3279b7460e30ce2f3a2deccbc252f3ca213cb022f5b7e6a25a0867/details
